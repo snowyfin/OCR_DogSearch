@@ -11,7 +11,7 @@ if __name__ == '__main__':
     custom_config = '--oem 3 --psm 11'
     all_matches = []
 
-    for root, dirs, filenames in os.walk(input_dir):
+    for root, dirs, filenames in os.walk(input_dir): # Text retrieval system
         for filename in filenames:
             try:
                 img_low = cv2.imread(input_dir + filename)
@@ -26,10 +26,10 @@ if __name__ == '__main__':
             except Exception as e:
                 print(f"Failed on {filename}: {e}")
                 continue
-
-    all_matches = sorted(set(all_matches), key=lambda x: int(x))
+    
+    all_matches = sorted(set(all_matches), key=lambda x: int(x)) # Number sorting system
     full_range = range(int(all_matches[0]), int(all_matches[-1]) + 1)
-    missing = [str(n) for n in full_range if str(n).zfill(3) not in all_matches and str(n) not in all_matches]
+    missing = [str(n) for n in full_range if str(n).zfill(3) not in all_matches and str(n) not in all_matches] # Collects missing
 
     for i, m in enumerate(all_matches):
         if i > 0 and int(m) != int(all_matches[i - 1]) + 1:
